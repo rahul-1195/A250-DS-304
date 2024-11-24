@@ -31,7 +31,7 @@ Assam,2010,AT3-Buses,3. Buses,2
 Assam,2001,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),0
 Assam,2002,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),0
 Assam,2003,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),0
-Assam,2004,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),NULL
+Assam,2004,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),0
 Assam,2005,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),5
 Assam,2006,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),15
 Assam,2007,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),31
@@ -144,7 +144,7 @@ Delhi,2005,AT3-Buses,3. Buses,4
 Delhi,2006,AT3-Buses,3. Buses,1
 Delhi,2007,AT3-Buses,3. Buses,2
 Delhi,2008,AT3-Buses,3. Buses,1
-Delhi,2009,AT3-Buses,3. Buses,NULL
+Delhi,2009,AT3-Buses,3. Buses,0
 Delhi,2010,AT3-Buses,3. Buses,1
 Delhi,2001,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),33
 Delhi,2002,AT4-Goods carrying vehicles (Trucks/Tempo etc),4. Goods carrying vehicles (Trucks/Tempo etc),94
