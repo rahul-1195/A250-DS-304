@@ -1,1 +1,33 @@
- 
+# R history files
+.Rhistory
+.RData
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+
+# Temporary files
+*.Rproj
+*.Rproj.user/
+*.Rhistory
+*.RData
+*.Ruserdata
+*.Rproj
+
+# Cache files
+.Rproj.user/
+.Rhistory
+*.RData
+*.Ruserdata
+*.Rproj
+
+# Logs
+*.log
+
+# Other files to ignore
+*.DS_Store          # macOS specific
+*.Rhistory          # R history files
+*.RData             # R data files
+*.Ruserdata         # R user data files
+*.Rproj             # RStudio project files
+.Rproj.user/        # RStudio user project files 
