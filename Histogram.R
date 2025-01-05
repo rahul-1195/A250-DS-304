@@ -37,7 +37,7 @@ ggplot(data, aes(x = Auto_Theft_Recovered, fill = Area_Name, color = Area_Name))
   labs(
     title = "Histogram with Bell Curve Overlays",
     x = "Auto Theft Recovered (Units)",
-    y = "Density"
+    y = "Frequency"
   ) +
   theme_minimal() +
   theme(
