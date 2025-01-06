@@ -1,17 +1,19 @@
-# Step 1: Load the Data and necessary libraries
+# Load necessary libraries
 library(ggplot2)
 library(readr)
 library(dplyr)
+
+# The dataset
 url <- "https://raw.githubusercontent.com/rahul-1195/A250-DS-304/main/Auto_theft%20.csv"
 auto_theft_data <- read_csv(url)
 
-# Step 2: Data Preprocessing
-auto_theft_data$Area_Name <- as.factor(auto_theft_data$Area_Name)
-auto_theft_data$Auto_Theft_Recovered <- as.numeric(auto_theft_data$Auto_Theft_Recovered)
+# Filter out totals or summaries
 filtered_data <- auto_theft_data %>%
-  filter(Area_Name %in% c("Assam", "Bihar", "Delhi"))
+  filter(!Area_Name %in% c("Total", "Overall", "Summary")) %>%
+  mutate(Auto_Theft_Recovered = as.numeric(Auto_Theft_Recovered)) %>%
+  filter(!is.na(Auto_Theft_Recovered))
 
-# Step 3: Descriptive Statistics(Mean , Median & SD)
+# Run the analysis on filtered data
 summary_stats <- filtered_data %>%
   group_by(Area_Name) %>%
   summarise(
@@ -20,44 +22,21 @@ summary_stats <- filtered_data %>%
     SD = sd(Auto_Theft_Recovered, na.rm = TRUE),
     Count = n()
   )
-print("Summary Statistics:")
+print("Summary Statistics for Raw Data Points:")
 print(summary_stats)
 
-# Step 4: Hypothesis Testing
-# Null Hypothesis (H₀): No significant difference in recovery rates across areas.
-# Alternative Hypothesis (H₁): Significant differences in recovery rates across areas.
-normality_tests <- filtered_data %>%
-  group_by(Area_Name) %>%
-  summarise(
-    p_value_shapiro = shapiro.test(Auto_Theft_Recovered)$p.value
-  )
-print("Shapiro-Wilk Normality Test Results:")
-print(normality_tests)
-kruskal_test <- kruskal.test(Auto_Theft_Recovered ~ Area_Name, data = filtered_data)
-print("Kruskal-Wallis Test Results:")
-print(kruskal_test)
-
-# Perform pairwise Wilcoxon Rank Sum tests if Kruskal-Wallis test is significant
-if (kruskal_test$p.value < 0.05) {
-  pairwise_results <- pairwise.wilcox.test(
-    x = filtered_data$Auto_Theft_Recovered,
-    g = filtered_data$Area_Name,
-    p.adjust.method = "bonferroni"
-  )
-  print("Pairwise Wilcoxon Rank Sum Test Results:")
-  print(pairwise_results)
-}
-
-# Step 5: Visualization
-ggplot(filtered_data, aes(x = Area_Name, y = Auto_Theft_Recovered, fill = Area_Name)) +
+# Visualization
+ggplot(filtered_data, aes(x = Auto_Theft_Recovered, y = Area_Name, fill = Area_Name)) +
   geom_boxplot(outlier.color = "red", outlier.shape = 16, alpha = 0.7) +
   labs(
     title = "Box Plot of Auto Theft Recovered by Area Name",
-    x = "Area Name",
-    y = "Auto Theft Recovered (Units)"
+    x = "Auto Theft Recovered (Units)",
+    y = "Area Name"
   ) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
     legend.position = "none"
   )
